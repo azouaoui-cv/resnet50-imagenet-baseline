@@ -4,7 +4,6 @@ Lightning Data Module class
 import logging
 
 import pytorch_lightning as pl
-from baseline.data import MEANS, STDS
 from baseline.utils import load_obj
 from hydra.utils import to_absolute_path
 from omegaconf import DictConfig
@@ -13,6 +12,13 @@ from torchvision import transforms
 
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.DEBUG)
+
+MEANS = {
+    "ImageNet": (0.485, 0.456, 0.406),
+}
+STDS = {
+    "ImageNet": (0.229, 0.224, 0.225),
+}
 
 
 class DataModule(pl.LightningDataModule):
