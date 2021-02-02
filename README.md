@@ -48,6 +48,6 @@ $ python train.py
 To test the model that you have trained on a specific datetime:
 
 ```
-$ python test.py test.checkpoint=data/runs/YYYY-MM-DD_HH-MM-SS
+$ python inference.py test.checkpoint=data/runs/YYYY-MM-DD_HH-MM-SS
 ```
 
