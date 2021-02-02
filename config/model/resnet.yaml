@@ -1,4 +1,4 @@
 # @package _group_
 class_name: "classif_deepsc.models.${models.architecture}"
 architecture: "resnet50"
-nclasses: ${datasets.nclasses}
+nclasses: ${dataset.nclasses}

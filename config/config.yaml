@@ -12,7 +12,7 @@ defaults:
 
 stdout: ${trainer.logging_level}
 
-id: ${models.architecture}_${datasets.name}_bs${data.loader_params.batch_size}_lr${training.lr}_wd${training.weight_decay}_e${training.epochs}_s${training.seed}_opt${optimizer.name}_lrscheduler${scheduler.name}
+id: ${model.architecture}_${dataset.name}_bs${data.loader_params.batch_size}_lr${training.lr}_wd${training.weight_decay}_e${training.epochs}_s${training.seed}_opt${optimizer.name}_lrscheduler${scheduler.name}
 
 hydra:
   run:
