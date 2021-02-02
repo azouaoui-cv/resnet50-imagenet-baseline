@@ -1,0 +1,6 @@
+pytorch_lightning==1.0.5
+hydra-core==1.0.3
+omegaconf==2.0.4
+torch==1.7.0
+torchvision==0.8.1
+tqdm==4.54.1

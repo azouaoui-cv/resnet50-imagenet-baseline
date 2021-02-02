@@ -1,0 +1,45 @@
+defaults:
+  - dataset: imagenet
+  - data: data
+  - model: resnet
+  - scheduler: step_imagenet
+  - optimizer: sgd
+  - training: imagenet
+  - trainer: multi_gpu
+  - checkpoint: default_checkpoint
+  - logger: tensorboard
+  - test: default
+
+stdout: ${trainer.logging_level}
+
+id: ${models.architecture}_${datasets.name}_bs${data.loader_params.batch_size}_lr${training.lr}_wd${training.weight_decay}_e${training.epochs}_s${training.seed}_opt${optimizer.name}_lrscheduler${scheduler.name}
+
+hydra:
+  run:
+    dir: "./data/runs/${now:%Y-%m-%d_%H-%M-%S}"
+  sweep:
+    dir: "./data/runs/${now:%Y-%m-%d_%H-%M-%S}"
+    subdir: ${hydra.job.num}_${id}
+  job_logging:
+    version: 1
+    formatters:
+      simple:
+        format: '[%(name)s][%(levelname)s] - %(message)s'
+      detailed:
+        format: '[%(asctime)s][%(name)s][%(levelname)s] - %(message)s'
+    handlers:
+      console:
+        class: logging.StreamHandler
+        formatter: simple
+        level: ${stdout}
+        stream: ext://sys.stdout
+      file:
+        class : logging.handlers.RotatingFileHandler
+        formatter: detailed
+        level: DEBUG
+        filename: training_debug.log
+    root:
+      handlers: [console, file]
+
+    disable_existing_loggers: false
+

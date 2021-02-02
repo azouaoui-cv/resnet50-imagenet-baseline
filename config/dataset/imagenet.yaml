@@ -1,0 +1,9 @@
+# @package _group_
+name: "ImageNet"
+class_name: "torchvision.datasets.${datasets.name}"
+nclasses: 1000
+path: "${data.data_path}/${datasets.name}"
+trfs_params:
+  train_crop_size: 224
+  val_crop_size: 224
+  val_resize: 256

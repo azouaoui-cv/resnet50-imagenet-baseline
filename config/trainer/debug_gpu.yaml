@@ -1,0 +1,8 @@
+# @package _group_
+logging_level: DEBUG
+params:
+  gpus: 1
+  deterministic: True
+  benchmark: False
+  fast_dev_run: True
+  weights_summary: null

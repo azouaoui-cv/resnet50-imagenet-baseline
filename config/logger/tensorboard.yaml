@@ -1,0 +1,6 @@
+# @package _group_
+class_name: pytorch_lightning.loggers.TensorBoardLogger
+params:
+  save_dir: "tb_logs"
+  name: ""
+  version: ""
