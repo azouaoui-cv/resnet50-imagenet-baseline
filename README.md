@@ -35,7 +35,7 @@ $ ln -s /path/your/imagenet/root $PWD/data/ImageNet
 
 ---
 
-**WARNING**: Make sure to have 4 GPUs with at least 16Gb per GPU on a single node to use DDP.
+**WARNING**: Make sure to have 4 GPUs with 32Gb per GPU on a single node to use DDP.
 
 To train a resnet50 model on ImageNet following [this](https://github.com/pytorch/examples/blob/master/imagenet/main.py) simple setup, use:
 
@@ -43,7 +43,7 @@ To train a resnet50 model on ImageNet following [this](https://github.com/pytorc
 $ python train.py
 ```
 
-**NOTE**: The training takes around 1 day when using the proposed setup.
+**NOTE**: The training takes around 1 day when using the proposed setup on 4 Tesla V100 GPUs.
 
 To test the model that you have trained on a specific datetime:
 
