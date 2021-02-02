@@ -1,6 +1,16 @@
 # resnet50-imagenet-baseline
 Image classification baseline using ResNet50 on ImageNet
 
+## Update
+
+1. I may have found the root cause for the test performance discrepancy.
+
+In this implementation, I happened to use a total batch size equal to 1024 as each process used a batch size of 256 and 4 processes were spawned. 
+In the official PyTorch example, each process use `bs=256/N` where `N` is the number of processes (4 here).
+It means that I had to either adjust the batch size (i.e. set it to 64 per process) or tune the learning rate accordingly (i.e. set it higher initially, e.g. 0.4 when using 256 images per process)
+
+2. I updated the number of workers to optimize the data throughput. This value is quite specific to the hardware used when training the model.
+
 ## Goal
 
 I’m currently interested in reproducing some baseline image classification results using PyTorch.
@@ -35,7 +45,7 @@ $ ln -s /path/your/imagenet/root $PWD/data/ImageNet
 
 ---
 
-**WARNING**: Make sure to have 4 GPUs with 32Gb per GPU on a single node to use DDP.
+**WARNING**: Make sure to have 4 GPUs with at least 12Gb per GPU on a single node to use DDP.
 
 To train a resnet50 model on ImageNet following [this](https://github.com/pytorch/examples/blob/master/imagenet/main.py) simple setup, use:
 
