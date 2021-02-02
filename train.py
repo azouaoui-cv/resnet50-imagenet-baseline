@@ -63,7 +63,7 @@ def train(cfg: DictConfig) -> None:
     # Logger
     trainer_logger = load_obj(cfg.logger.class_name)(**cfg.logger.params)
     # Load model
-    model = load_obj(cfg.models.class_name)(cfg)
+    model = load_obj(cfg.model.class_name)(cfg)
 
     # Save model id
     with open("id", "w") as f:

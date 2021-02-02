@@ -37,7 +37,7 @@ def test(cfg):
                 gpus=cfg.test.gpus,
             )
             # Load model
-            model = load_obj(ckpt_cfg.models.class_name)(ckpt_cfg)
+            model = load_obj(ckpt_cfg.model.class_name)(ckpt_cfg)
         else:
             logger.info("No existing ckpt found. Aborting")
             return None
