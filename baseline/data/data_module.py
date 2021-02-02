@@ -25,7 +25,7 @@ class DataModule(pl.LightningDataModule):
     def __init__(self, cfg: DictConfig):
         super().__init__()
         self.name = cfg.datasets.name
-        self.class_name = cfg.datasets.class_name
+        self.class_name = cfg.dataset.class_name
         self.root = to_absolute_path(cfg.datasets.path)
         self.loader_params = cfg.data.loader_params
         ##############
