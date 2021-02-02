@@ -1,6 +1,6 @@
 import logging
 
-from classif_deepsc.utils.base import load_obj
+from baseline.utils import load_obj
 from pytorch_lightning.callbacks import ModelCheckpoint
 
 logger = logging.getLogger(__name__)
