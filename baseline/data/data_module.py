@@ -24,18 +24,18 @@ STDS = {
 class DataModule(pl.LightningDataModule):
     def __init__(self, cfg: DictConfig):
         super().__init__()
-        self.name = cfg.datasets.name
+        self.name = cfg.dataset.name
         self.class_name = cfg.dataset.class_name
-        self.root = to_absolute_path(cfg.datasets.path)
+        self.root = to_absolute_path(cfg.dataset.path)
         self.loader_params = cfg.data.loader_params
         ##############
         # Transforms #
         ##############
         means, stds = MEANS[self.name], STDS[self.name]
         logger.debug(f"hard coded means: {means}, stds: {stds}")
-        train_crop_size = cfg.datasets.trfs_params.train_crop_size
-        val_crop_size = cfg.datasets.trfs_params.val_crop_size
-        val_resize = cfg.datasets.trfs_params.val_resize
+        train_crop_size = cfg.dataset.trfs_params.train_crop_size
+        val_crop_size = cfg.dataset.trfs_params.val_crop_size
+        val_resize = cfg.dataset.trfs_params.val_resize
 
         self.train_transforms = transforms.Compose(
             [
